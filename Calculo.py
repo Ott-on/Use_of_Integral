@@ -2,6 +2,7 @@ import numpy as np
 import pandas
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import prophet
 
 #import mplcursors
 
@@ -15,7 +16,7 @@ def eh_numero(texto):
 
 def vericacao_datas(ano_inicio, ano_final):
     global ey_end, ey_start
-    if(ano_inicio > ano_final):               # NOTE: Rafael
+    if(ano_inicio > ano_final):               
       ey_start = ano_final
       ey_end = ano_inicio
 
@@ -98,12 +99,6 @@ if len(datas) >= 2:
   plt.show()
 else:
   print("Não foi possivel construir o gráfico!")
-
-import prophet
-
-import pandas as pd
-import matplotlib.pyplot as plt
-
 
 # Criar e ajustar o modelo Prophet aos dados históricos
 modelo = prophet.Prophet()
