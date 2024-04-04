@@ -30,7 +30,7 @@ if ew_start > 1:
 else:
     ew_start = 53
     ey_start = ey_start - 1
-    
+
 def obter_dados(*arg):
     if len(arg) > 0:
         disease = arg[0]
@@ -75,9 +75,18 @@ futuro = modelo.make_future_dataframe(periods=120, freq='W')
 previsao = modelo.predict(futuro)
 print(previsao)
 
+# Calcular a integral usando a regra do trapézio para os dados de previsão
+y_previsao = previsao['yhat'].values
+x_previsao = np.array([i for i in range(len(y_previsao))])
+integral_previsao = np.trapz(y_previsao, x_previsao)
+
+
 # Plotar os resultados da previsão
 fig = modelo.plot(previsao)
 plt.title('Previsão de casos futuros de dengue')
 plt.xlabel('Data')
 plt.ylabel('Número de casos')
 plt.show()
+
+# Mostrar valor da integral
+print(f"O valor da integral da previsão é: {int(integral_previsao)}")
