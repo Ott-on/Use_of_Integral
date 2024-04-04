@@ -66,6 +66,14 @@ def obter_dados(*arg):
 
 # Criar e ajustar o modelo Prophet aos dados históricos
 dados = obter_dados("Dengue")
+x = np.array([i for i in range(len(dados['SE'].values))]) # intervalo de semanas
+if len(x) >= 2:
+  y = np.array([dados['casos_est'].values][0][::-1]) # valores do fim de cada semana
+
+  # Calcular a integral usando a regra do trapézio
+  integral = np.trapz(y, x)
+else:
+  print("Nao foi possivel obter a integral!")
 modelo = Prophet()
 dados.rename(columns={'data_iniSE': 'ds', 'casos_est': 'y'}, inplace=True)
 modelo.fit(dados.iloc[:,[0, 2]])
@@ -90,3 +98,5 @@ plt.show()
 
 # Mostrar valor da integral
 print(f"O valor da integral da previsão é: {int(integral_previsao)}")
+
+print(f"O quanto aumentou: {int(integral_previsao - integral)}")
