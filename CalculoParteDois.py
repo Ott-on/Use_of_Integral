@@ -18,10 +18,10 @@ def vericacao_datas(ano_inicio, ano_final):
       ey_start = ano_final
       ey_end = ano_inicio
 
-ey_start = 2000#max(2010, eh_numero("Defina o ano de início: "))
-ew_start = 1#min(1, (eh_numero("Defina a semana de início: ")))
-ey_end = 2024#max(2010, eh_numero("Defina o ano de término: "))
-ew_end = 1#min(1, (eh_numero("Defina a semana de término: ")))
+ey_start = max(2010, eh_numero("Defina o ano de início: "))
+ew_start = min(1, (eh_numero("Defina a semana de início: ")))
+ey_end = max(2010, eh_numero("Defina o ano de término: "))
+ew_end = min(1, (eh_numero("Defina a semana de término: ")))
 
 vericacao_datas(ey_start, ey_end)
 
@@ -92,6 +92,8 @@ integral_previsao = np.trapz(y_previsao, x_previsao)
 # Plotar os resultados da previsão
 fig = modelo.plot(previsao)
 plt.title('Previsão de casos futuros de dengue')
+plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9, hspace=0.5, wspace=0.5)
+plt.gcf().set_size_inches(12, 15)
 plt.xlabel('Data')
 plt.ylabel('Número de casos')
 plt.show()
