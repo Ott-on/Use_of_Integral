@@ -33,10 +33,11 @@ Para executar o projeto, siga os passos abaixo:
 
 2. Execute o seguinte comando no terminal para iniciar um dos casos:
 
+   Caso seja o 1° - Ver o valor da integral para a quantidade de casos:
    ```
    python Calculo.py
    ```
-   Caso seja o 2°:
+   Caso seja o 2° - Ver o valor da integral para a previsão da quantidade de casos:
    ```
    python CalculoParteDois.py
    ```
