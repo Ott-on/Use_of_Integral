@@ -19,9 +19,9 @@ def vericacao_datas(ano_inicio, ano_final):
       ey_end = ano_inicio
 
 ey_start = max(2010, eh_numero("Defina o ano de início: "))
-ew_start = min(1, (eh_numero("Defina a semana de início: ")))
+ew_start = max(1, (eh_numero("Defina a semana de início: ")))
 ey_end = max(2010, eh_numero("Defina o ano de término: "))
-ew_end = min(1, (eh_numero("Defina a semana de término: ")))
+ew_end = max(1, (eh_numero("Defina a semana de término: ")))
 
 vericacao_datas(ey_start, ey_end)
 
