@@ -3,6 +3,17 @@
 Bem-vindo ao projeto de uso de integral para um caso real em Python!
 Aqui, utilizamos de bibliotecas como matplotlib, numpy, pandas e prophet para a resolução de casos, por exemplo, a quantidade de casos de Dengue em determinada cidade, no caso, em Recife; também a previsão para a quantidade de casos ao 120 dias próximos. 
 
+## API
+
+Aqui está o link da documentação da API que utilizamos para obtermos os dados dos casos de Dengue: https://github.com/AlertaDengue/AlertaDengue
+
+## Documentação das bibliotecas utilizadas
+
+- Numpy: https://numpy.org/doc/stable/
+- Pandas: https://pandas.pydata.org/docs/
+- Matplotlib: https://matplotlib.org/stable/index.html
+- Prophet: https://facebook.github.io/prophet/docs/quick_start.html
+
 ## Instalação
 
 Antes de começar, certifique-se de ter o Python e o pip instalados em seu sistema. A seguir, siga estas etapas simples para configurar o projeto:
