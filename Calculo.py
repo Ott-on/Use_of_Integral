@@ -64,7 +64,6 @@ def obter_dados(*arg):
     return pandas.read_csv(url_resp)
 
 dados = obter_dados()
-dado_auxiliar1 = obter_dados("chikungunya")
 
 x = np.array([i for i in range(len(dados['SE'].values))]) # intervalo de semanas
 if len(x) >= 2:
@@ -81,7 +80,6 @@ else:
 datas = dados['data_iniSE'].values[::-1]
 if len(datas) >= 2:
   plt.plot(datas, y, label="dengue", color="red")
-  plt.plot([dado_auxiliar1['casos_est'].values][0][::-1], label="chikungunya", color="green")
 
   # ajustando as legendas do gráfico
   plt.legend()
