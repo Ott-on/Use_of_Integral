@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import scipy
 
 def eh_numero(texto):
     while True:
@@ -58,9 +59,9 @@ def obter_dados(region, disease="dengue"):
 
     return pd.read_csv(url_resp)
 
-# Geocodes para Cabo, Jaboatão e Recife
-regions = [2602902, 2607901, 2611606]
-region_names = ["Cabo de Santo Agostinho", "Jaboatão dos Guararapes", "Recife"]
+# Geocodes para, Jaboatão e Recife
+regions = [2607901, 2611606]
+region_names = ["Jaboatão dos Guararapes", "Recife"]
 dados_regions = {region: obter_dados(region) for region in regions}
 
 # Extraindo semanas e casos para cada região
@@ -72,15 +73,10 @@ if len(weeks) >= 2:
         dados = dados_regions[region]
         cases_per_region[region] = np.array(dados['casos_est'].values[::-1])
 
-    # Primeira Integral (em relação ao tempo)
-    integral_time = np.zeros(len(regions))
-    for i, region in enumerate(regions):
-        integral_time[i] = np.trapz(cases_per_region[region], weeks)
+    # calculo da diferença de casos a partir da integral
+    integral_diferenca = abs(np.trapz(cases_per_region[2607901], weeks) - np.trapz(cases_per_region[2611606], weeks))
 
-    # Segunda Integral (em relação ao espaço)
-    total_integral = np.trapz(integral_time, np.arange(len(regions)))
-
-    print("O valor da integral dupla é:", int(total_integral))
+    print("O valor da integral dupla é:", int(integral_diferenca))
 
     # Plotando os dados com preenchimento de área
     plt.figure(figsize=(10, 6))
@@ -100,5 +96,3 @@ if len(weeks) >= 2:
     plt.show()
 else:
     print("Não foi possível obter a integral!")
-
-
